@@ -75,27 +75,33 @@
                 return true
             }
         }
+        // function deleting(x) {
+        //     x = x - 1
+        //     console.log(x)
+        //     let someData = localStorage.getItem('data');
+        //     someData = JSON.parse(someData);
+        //     console.log(typeof (someData));
+        //     let newArr;
+        //     newArr = someData.forEach((ele) => {
+        //         console.log(ele);
+        //         if (x != ele.sno) {
+        //             return ele;
+        //         }
+        //     })
+        // }
         function deleting(x) {
-            x=x-1
+            x = x - 1
             console.log(x)
             let someData = localStorage.getItem('data');
             someData = JSON.parse(someData);
-            console.log(typeof(someData));
+            console.log(typeof (someData));
             let newArr;
-            newArr = someData.forEach((ele)=>{
+            newArr = someData.forEach((ele) => {
                 console.log(ele);
-                if(x !=ele.sno)
-                {
+                if (x != ele.sno) {
                     return ele;
                 }
             })
-            // data.forEach((ele)=>{
-
-            // })
-            // data2.forEach
-            // delete data2[x]
-            // data2 = JSON.parse(localStorage.getItem('data'));
-            
         }
 
         const addContainer = (e) => {
@@ -113,22 +119,25 @@
 
 
         const body = document.querySelector("body")
+        body.addEventListener("loadeddata", reload())
         function reload() {
-            data2 = JSON.parse(localStorage.getItem('data'));
-            if (data2 !== 0) {
-                prev = data2
-                data = data.concat(data2);
-                data2.map((e) => {
-                    addContainer(e)
+            let temp
+            temp = JSON.parse(localStorage.getItem('data'));
+            if (temp != 0) {
+                console.log("data2 !+ 0")
+                prev = temp
+                data = data.concat(temp);
+                if (temp !== null) {
+                    temp.map((e) => {
+                        addContainer(e)
+                    }
+                    )
                 }
-                )
             }
         }
 
-        body.addEventListener("load", reload())
 
         const addBtn = () => {
-
             let title = document.getElementById("taskTitle").value;
             let description = document.getElementById("taskDescription").value;
 
@@ -148,14 +157,7 @@
         }
         // todo 1 : retrive data from local storage
         // todo 2 : if data retrived from local storage is not empty AND data array is empty => put the data from local storage into the data array
-
-
-
     </script>
-    <!-- Bootstrap JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
