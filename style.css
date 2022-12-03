@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    height: 100%;
+    min-height: 30vh;
+    width: 100%;
+    justify-content: space-around;
+    max-width: 70vw;
+    margin: 0 auto;
+}
+
+#container input {
+    height: 100%;
+    max-height: 6vh;
+    width: 100%;
+}
