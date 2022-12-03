@@ -90,19 +90,32 @@
         //     })
         // }
         function deleting(x) {
+            console.log("Deleting Called")
             x = x - 1
-            console.log(x)
-            let someData = localStorage.getItem('data');
-            someData = JSON.parse(someData);
-            console.log(typeof (someData));
-            let newArr;
-            newArr = someData.forEach((ele) => {
-                console.log(ele);
-                if (x != ele.sno) {
-                    return ele;
+            let temp = JSON.parse(localStorage.getItem('data'));
+            // console.log("HI THI IS THE REQUIRED")
+            // console.log(temp[x])
+            // delete temp[x]
+
+            // console.log("After dels")
+            // console.log(temp)
+            temp.map((e) => {
+                if (e == temp[x]) {
+                    console.log("e and temp[x] is equal ",e,temp[x])
+                    return
+                }
+                else {
+                    console.log("e and temp[x] is not equal ",e,temp[x])
+
+                    let temp1 = []
+                    temp1.push(e)
+                    localStorage.setItem('temp1', JSON.stringify(temp1));
                 }
             })
+
         }
+
+
 
         const addContainer = (e) => {
             const tr = document.createElement('tr')
@@ -120,11 +133,11 @@
 
         const body = document.querySelector("body")
         body.addEventListener("loadeddata", reload())
+
         function reload() {
-            let temp
-            temp = JSON.parse(localStorage.getItem('data'));
+            let temp = JSON.parse(localStorage.getItem('data'));
             if (temp != 0) {
-                console.log("data2 !+ 0")
+                // console.log("data2 !+ 0")
                 prev = temp
                 data = data.concat(temp);
                 if (temp !== null) {
