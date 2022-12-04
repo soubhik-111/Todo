@@ -19,13 +19,17 @@ function checkEmpty(title, description) {
     }
 }
 
+
 function deleting(x) {
-    console.log("Deleting Called")
     let temp = JSON.parse(localStorage.getItem('data'));
 
     temp = temp.filter(function (obj) {
         return obj.sno !== x;
     });
+    for (let index = 0; index < temp.length; index++) {
+        temp[index].sno = index+1;
+    }
+
     localStorage.setItem('data', JSON.stringify(temp));
     create(temp)
     location.reload();
