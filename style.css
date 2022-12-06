@@ -17,3 +17,6 @@
     max-height: 6vh;
     width: 100%;
 }
+#tableContainer{
+    display: flex;
+}

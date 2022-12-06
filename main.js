@@ -1,5 +1,18 @@
 let data = []
 let data2 = 0
+let date = Date();
+console.log(date)
+
+function newMember() {
+    let tableContainer = document.getElementById("tableContainer")
+    if (data.length === 0) {
+        tableContainer.style.display = "none"
+    }
+    else {
+        tableContainer.style.display = "flex"
+    }
+}
+newMember()
 
 function checkEmpty(title, description) {
     if (title === "" && description === "") {
@@ -27,7 +40,7 @@ function deleting(x) {
         return obj.sno !== x;
     });
     for (let index = 0; index < temp.length; index++) {
-        temp[index].sno = index+1;
+        temp[index].sno = index + 1;
     }
 
     localStorage.setItem('data', JSON.stringify(temp));
@@ -43,6 +56,7 @@ const addContainer = (e) => {
         <td>${e.description}</td>
         <td style="text-align :center"><i class="bi bi-file-earmark-x-fill" onclick="deleting(${e.sno})"></i></td>
     </tr>`
+
     const ele = document.getElementById("tableBody");
     ele.append(tr)
 }
@@ -65,6 +79,7 @@ function reload() {
             create(temp)
         }
     }
+    newMember()
 }
 
 
@@ -82,6 +97,7 @@ const addBtn = () => {
         localStorage.setItem('data', JSON.stringify(data));
         addContainer(myObject)
     }
+    newMember()
     document.getElementById("taskTitle").value = ""
     document.getElementById("taskDescription").value = ""
 }
